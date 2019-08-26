@@ -1,7 +1,5 @@
 package com.example.springaop;
 
-import org.aopalliance.intercept.Invocation;
-
 import java.lang.reflect.InvocationTargetException;
 
 public interface Interceptor {
