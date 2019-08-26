@@ -17,7 +17,7 @@ public class Invocation {
     private Method method;
     private Object target;
 
-    public Invocation(Object[] params, Method method, Object target) {
+    public Invocation(Object target, Method method, Object[] params) {
         this.params = params;
         this.method = method;
         this.target = target;
