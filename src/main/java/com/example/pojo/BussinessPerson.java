@@ -23,7 +23,7 @@ public class BussinessPerson implements BeanNameAware, BeanFactoryAware, Applica
 
     @Override
     public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
-        System.out.println(this.getClass().getSimpleName() + "调用 BeanFactoryAware 的 setBeanFactory ”");
+        System.out.println(this.getClass().getSimpleName() + "调用 BeanFactoryAware 的 setBeanFactory ");
     }
 
     @Override
@@ -38,7 +38,7 @@ public class BussinessPerson implements BeanNameAware, BeanFactoryAware, Applica
 
     @PreDestroy
     public void destroy0() throws Exception {
-        System.out.println(this.getClass().getSimpleName() + " 注解g Pre Destroy 定义的自定义销毁方法");
+        System.out.println(this.getClass().getSimpleName() + " 注解 PreDestroy 定义的自定义销毁方法");
     }
 
     @Override
@@ -48,6 +48,6 @@ public class BussinessPerson implements BeanNameAware, BeanFactoryAware, Applica
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        System.out.println(this.getClass().getSimpleName() + "调用 ApplicationContextAware 的 setAppl 工 cationContext");
+        System.out.println(this.getClass().getSimpleName() + "调用 ApplicationContextAware 的 setApplicationContext");
     }
 }
