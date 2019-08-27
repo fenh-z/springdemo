@@ -32,12 +32,12 @@ public class Myinterceptor implements Interceptor {
 
     @Override
     public void afterReturning() {
-        System.out.println(" afterReturning ..... ");
+        System.out.println("afterReturning ..... ");
     }
 
     @Override
     public void afterThrowing() {
-        System.out.println(" afterThrowing ...... ");
+        System.out.println("afterThrowing ...... ");
     }
 
     @Override
