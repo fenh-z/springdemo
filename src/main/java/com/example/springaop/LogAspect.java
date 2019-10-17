@@ -2,6 +2,8 @@ package com.example.springaop;
 
 import com.example.busi.impl.UserValidate;
 import com.example.busi.inter.IUserValidate;
+import com.example.pojo.User;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.context.annotation.Configuration;
@@ -16,8 +18,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class LogAspect {
 
-    @DeclareParents(value = "com.example.busi.impl.UserService+", defaultImpl = UserValidate.class)
-    public IUserValidate userValidate;
+//    @DeclareParents(value = "com.example.busi.impl.UserService+", defaultImpl = UserValidate.class)
+//    public IUserValidate userValidate;
 
     @Pointcut("execution(* com.example.busi.impl.UserService.print(..))")
     public void pointCut() {
@@ -34,7 +36,11 @@ public class LogAspect {
     }
 
     @Before("pointCut()")
-    public void doBefore() {
+    public void doBefore(JoinPoint joinPoint) {
+        Object[] args = joinPoint.getArgs();
+        if(args !=null) {
+            System.out.println("args = " + args.toString());
+        }
         System.out.println("this is before");
     }
 
