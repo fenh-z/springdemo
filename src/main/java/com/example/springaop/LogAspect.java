@@ -4,6 +4,7 @@ import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * @Author zhangdx
@@ -12,6 +13,7 @@ import org.aspectj.lang.annotation.Pointcut;
  * @Describe
  */
 @Aspect
+@Configuration
 public class LogAspect {
 
     @Pointcut("execution(* com.example.busi.impl.UserService.print(..))")
