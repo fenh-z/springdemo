@@ -9,6 +9,7 @@ import com.example.pojo.User;
  * @CreateDate 2019/10/17 3:38 下午
  * @Describe
  */
+
 public class UserValidate implements IUserValidate {
     @Override
     public boolean validate(User user) {
