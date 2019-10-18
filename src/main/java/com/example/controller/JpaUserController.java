@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/jpausr")
 public class JpaUserController {
 
-    @Autowired
+//    @Autowired
     private JpaUserRepository jpaUserRepository;
 
     @RequestMapping("/getUser")
