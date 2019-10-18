@@ -18,13 +18,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class JpaUserController {
 
 //    @Autowired
-    private JpaUserRepository jpaUserRepository;
-
-    @RequestMapping("/getUser")
-    @ResponseBody
-    public User getUser(Long id) {
-        User user = jpaUserRepository.findById(id).get();
-        return user;
-    }
+//    private JpaUserRepository jpaUserRepository;
+//
+//    @RequestMapping("/getUser")
+//    @ResponseBody
+//    public User getUser(Long id) {
+//        User user = jpaUserRepository.findById(id).get();
+//        return user;
+//    }
 
 }

@@ -40,6 +40,12 @@ public class UserController {
 
     }
 
+    @RequestMapping("/getUser")
+    @ResponseBody
+    public User getUser(Long id) {
+        return userService.getUser(id);
+    }
+
 //    @RequestMapping("vp")
 //    @ResponseBody
 //    public User validateAndPrint(String id, String userName, String age) {

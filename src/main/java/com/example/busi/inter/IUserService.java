@@ -6,4 +6,6 @@ public interface IUserService {
 
     public void print(User user);
 
+    public User getUser(Long id);
+
 }
