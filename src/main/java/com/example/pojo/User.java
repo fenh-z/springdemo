@@ -1,6 +1,7 @@
 package com.example.pojo;
 
 import com.example.enumration.SexEnum;
+import org.apache.ibatis.type.Alias;
 
 import javax.persistence.*;
 
@@ -11,17 +12,18 @@ import javax.persistence.*;
  * @create 2019-08-26 16:56
  * @desc
  */
-@Entity(name = "user")
-@Table(name = "t_user")
+//@Entity(name = "user")
+//@Table(name = "t_user")
+@Alias(value = "user")
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "user_name")
+    //    @Column(name = "user_name")
     private String userName;
     private String note;
-    @Convert(converter = SexConverter.class)
+    //    @Convert(converter = SexConverter.class)
     private SexEnum sex;
 
     public String getNote() {
