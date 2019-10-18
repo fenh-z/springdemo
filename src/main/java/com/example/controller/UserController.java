@@ -1,8 +1,6 @@
 package com.example.controller;
 
 import com.example.busi.impl.UserService;
-import com.example.busi.impl.UserValidate;
-import com.example.busi.inter.IUserValidate;
 import com.example.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +22,7 @@ public class UserController {
 
     @RequestMapping("print")
     @ResponseBody
-    public User print(String id, String userName, String note) {
+    public User print(Long id, String userName, String note) {
 
         System.out.println("begin print");
 
