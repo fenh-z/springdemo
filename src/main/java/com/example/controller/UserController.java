@@ -24,12 +24,12 @@ public class UserController {
 
     @RequestMapping("print")
     @ResponseBody
-    public User print(String id, String userName, String age) {
+    public User print(String id, String userName, String note) {
 
         System.out.println("begin print");
 
         User user = new User();
-        user.setAge(age);
+        user.setNote(note);
         user.setId(id);
         user.setUserName(userName);
 
