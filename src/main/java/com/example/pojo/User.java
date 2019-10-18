@@ -12,7 +12,7 @@ import com.example.enumration.SexEnum;
 
 public class User {
 
-    private String id;
+    private Long id;
     private String userName;
     private String note;
     private SexEnum sex;
@@ -25,11 +25,11 @@ public class User {
         this.note = note;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
