@@ -2,6 +2,8 @@ package com.example.pojo;
 
 import com.example.enumration.SexEnum;
 
+import javax.persistence.*;
+
 /**
  * com.example.pojo
  *
@@ -9,12 +11,17 @@ import com.example.enumration.SexEnum;
  * @create 2019-08-26 16:56
  * @desc
  */
-
+@Entity(name = "user")
+@Table(name = "t_user")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "user_name")
     private String userName;
     private String note;
+    @Convert(converter = SexConverter.class)
     private SexEnum sex;
 
     public String getNote() {
