@@ -1,5 +1,7 @@
 package com.example.pojo;
 
+import com.example.enumration.SexEnum;
+
 /**
  * com.example.pojo
  *
@@ -12,7 +14,16 @@ public class User {
 
     private String id;
     private String userName;
-    private String age;
+    private String note;
+    private SexEnum sex;
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
 
     public String getId() {
         return id;
@@ -30,20 +41,11 @@ public class User {
         this.userName = userName;
     }
 
-    public String getAge() {
-        return age;
+    public SexEnum getSex() {
+        return sex;
     }
 
-    public void setAge(String age) {
-        this.age = age;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", userName='" + userName + '\'' +
-                ", age='" + age + '\'' +
-                '}';
+    public void setSex(SexEnum sex) {
+        this.sex = sex;
     }
 }
