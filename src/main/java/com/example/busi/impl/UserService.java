@@ -31,13 +31,13 @@ public class UserService implements IUserService {
     }
 
     @Override
-    @Transactional(isolation = Isolation.READ_COMMITTED, timeout = 1)
+    @Transactional(timeout = 1)
     public User getUser(Long id) {
         return userDao.getUser(id);
     }
 
     @Override
-    @Transactional(isolation = Isolation.READ_COMMITTED, timeout = 1)
+    @Transactional(timeout = 1)
     public int insertUser(User user) {
         return userDao.insertUser(user);
     }
