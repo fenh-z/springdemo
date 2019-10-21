@@ -1,12 +1,14 @@
 package com.example.demo;
 
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.persistence.Entity;
 
@@ -19,6 +21,9 @@ import javax.persistence.Entity;
         annotationClass = Repository.class
 )
 public class DemoApplication {
+
+    @Autowired
+    PlatformTransactionManager platformTransactionManager;
 
     public static void main(String[] args) {
 

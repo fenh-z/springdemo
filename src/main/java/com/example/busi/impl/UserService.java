@@ -5,6 +5,9 @@ import com.example.dao.inter.UserDao;
 import com.example.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
+
 
 /**
  * @Author zhangdx
@@ -28,8 +31,15 @@ public class UserService implements IUserService {
     }
 
     @Override
+    @Transactional(isolation = Isolation.READ_COMMITTED, timeout = 1)
     public User getUser(Long id) {
         return userDao.getUser(id);
+    }
+
+    @Override
+    @Transactional(isolation = Isolation.READ_COMMITTED, timeout = 1)
+    public int insertUser(User user) {
+        return userDao.insertUser(user);
     }
 
 

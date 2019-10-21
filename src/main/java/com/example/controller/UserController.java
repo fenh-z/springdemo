@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @Author zhangdx
  * @Parameter
@@ -44,6 +47,22 @@ public class UserController {
     @ResponseBody
     public User getUser(Long id) {
         return userService.getUser(id);
+    }
+
+    @RequestMapping("/insert")
+    @ResponseBody
+    public Map<String, Object> insertUser(String userName, String note) {
+        User user = new User();
+        user.setUserName(userName);
+        user.setNote(note);
+
+        int update = userService.insertUser(user);
+
+        Map<String, Object> ret = new HashMap<>();
+        ret.put("SUCC", update == 1);
+        ret.put("USER", user);
+        return ret;
+
     }
 
 //    @RequestMapping("vp")
