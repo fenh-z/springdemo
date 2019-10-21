@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.busi.impl.UserBatchService;
 import com.example.busi.impl.UserService;
 import com.example.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,6 +25,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserBatchService userBatchService;
 
     @RequestMapping("print")
     @ResponseBody
@@ -61,6 +66,31 @@ public class UserController {
         Map<String, Object> ret = new HashMap<>();
         ret.put("SUCC", update == 1);
         ret.put("USER", user);
+        return ret;
+
+    }
+
+    @RequestMapping("/insertUsers")
+    @ResponseBody
+    public Map<String, Object> inserUsers(String userName0, String note0, String userName1, String note1) {
+
+        User user0 = new User();
+        user0.setUserName(userName0);
+        user0.setNote(note0);
+
+        User user1 = new User();
+        user1.setUserName(userName1);
+        user1.setNote(note1);
+
+        List<User> userList = new ArrayList<>();
+        userList.add(user0);
+        userList.add(user1);
+
+        int iret = userBatchService.insertUsers(userList);
+
+        Map<String, Object> ret = new HashMap<>();
+        ret.put("SUCC", iret > 0);
+        ret.put("USER", userList);
         return ret;
 
     }
