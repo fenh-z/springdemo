@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.PlatformTransactionManager;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.Entity;
 
 @SpringBootApplication(scanBasePackages = "com.example")
@@ -24,6 +25,12 @@ public class DemoApplication {
 
     @Autowired
     PlatformTransactionManager platformTransactionManager;
+
+    @PostConstruct
+    public void viewTransactionManager() {
+        // 启动前加入断点观测
+        System.out.println(platformTransactionManager.getClass().getName());
+    }
 
     public static void main(String[] args) {
 

@@ -2,6 +2,8 @@ package com.example.controller;
 
 import com.example.busi.impl.UserBatchService;
 import com.example.busi.impl.UserService;
+import com.example.busi.inter.IUserBatchService;
+import com.example.busi.inter.IUserService;
 import com.example.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,9 +26,9 @@ import java.util.Map;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private IUserService userService;
     @Autowired
-    private UserBatchService userBatchService;
+    private IUserBatchService userBatchService;
 
     @RequestMapping("print")
     @ResponseBody
