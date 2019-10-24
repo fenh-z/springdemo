@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.PlatformTransactionManager;
 
@@ -24,12 +26,19 @@ import javax.persistence.Entity;
 public class DemoApplication {
 
     @Autowired
-    PlatformTransactionManager platformTransactionManager;
+    private PlatformTransactionManager platformTransactionManager;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @PostConstruct
-    public void viewTransactionManager() {
-        // 启动前加入断点观测
-        System.out.println(platformTransactionManager.getClass().getName());
+    public void init() {
+        initRedisTemplate();
+    }
+
+    public void initRedisTemplate() {
+        RedisSerializer stringSerializer = redisTemplate.getStringSerializer();
+        redisTemplate.setKeySerializer(stringSerializer);
+        redisTemplate.setValueSerializer(stringSerializer);
     }
 
     public static void main(String[] args) {

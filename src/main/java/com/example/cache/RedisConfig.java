@@ -12,13 +12,16 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import redis.clients.jedis.JedisPoolConfig;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 /**
  * @Author zhangdx
  * @Parameter
  * @CreateDate 2019/10/22 2:48 下午
  * @Describe
  */
-@Configuration
+//@Configuration
 public class RedisConfig {
 
     private RedisConnectionFactory connectionFactory;
@@ -59,11 +62,18 @@ public class RedisConfig {
         return redisTemplate;
     }
 
-    public static void main(String[] args) {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(RedisConfig.class);
-        RedisTemplate redisTemplate = (RedisTemplate) applicationContext.getBean("redisTemplate");
-        redisTemplate.opsForValue().set("key1", "1");
-        redisTemplate.opsForHash().put("hash ", "field", "hvalue");
+    public static void main(String[] args) throws UnknownHostException {
+//        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(RedisConfig.class);
+//        RedisTemplate redisTemplate = (RedisTemplate) applicationContext.getBean("redisTemplate");
+//        redisTemplate.opsForValue().set("key1", "1");
+//        redisTemplate.opsForHash().put("hash ", "field", "hvalue");
+
+
+        InetAddress addr = InetAddress.getLocalHost();
+        System.out.println("Local HostAddress " + addr.getHostAddress());
+        String hostname = addr.getHostName();
+        System.out.println("Local host name: " + hostname);
+
     }
 
 }
