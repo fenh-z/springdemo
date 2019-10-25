@@ -3,15 +3,15 @@ package com.example.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.BoundHashOperations;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @Author zhangdx
@@ -56,9 +56,29 @@ public class RedisController {
 
         BoundHashOperations mapOps = stringRedisTemplate.boundHashOps("hash");
         mapOps.delete("key1");
-        mapOps.put("key5","val5");
+        mapOps.put("key5", "val5");
 
         return out;
+    }
+
+    @RequestMapping("/zset")
+    @ResponseBody
+    public Map<String, Object> zset() {
+
+        Set<ZSetOperations.TypedTuple<String>> typedTupleSet = new HashSet<>();
+        for (int i = 1; i <= 9; i++) {
+            // 分数
+            double score = i * 0.1;
+            // 创建一个TypedTuple对象，存入值和分数
+            ZSetOperations.TypedTuple<String> typedTuple = new DefaultTypedTuple<String>("value" + i, score);
+            typedTupleSet.add(typedTuple);
+        }
+
+        stringRedisTemplate.opsForZSet().add("zset1", typedTupleSet);
+
+
+
+        return new HashMap<>();
     }
 
 }
