@@ -8,10 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @Author zhangdx
@@ -61,6 +58,81 @@ public class RedisController {
         return out;
     }
 
+    //list操作
+    @RequestMapping("/list")
+    @ResponseBody
+    public Map<String, Object> list() {
+
+        stringRedisTemplate.opsForList().leftPushAll("list1", "v1", "v2", "v3", "v4", "v5");
+        stringRedisTemplate.opsForList().rightPushAll("list2", "v1", "v2", "v3", "v4", "v5", "v6");
+
+        BoundListOperations list2 = stringRedisTemplate.boundListOps("list2");
+
+        list2.rightPop();//从右边弹出一个成员
+
+        String ret = (String) list2.index(1);//按照index去除一个
+
+        log.info("@@@@@@@@@  ret = {}", ret);
+
+        list2.leftPush("v133");
+        list2.leftPush("v111", "v333");
+
+        List<String> elements = list2.range(0, list2.size() - 2);
+
+        for (String element : elements) {
+            log.info("@@@@  element = {}", element);
+        }
+
+
+        return new HashMap<>();
+    }
+
+    @RequestMapping("/set")
+    @ResponseBody
+    public Map<String, Object> set() {
+
+        stringRedisTemplate.opsForSet().add("set1", "v1", "v2", "v3", "v4");
+        stringRedisTemplate.opsForSet().add("set2", "v2", "v3", "v4", "v5", "v6");
+
+        BoundSetOperations set1 = stringRedisTemplate.boundSetOps("set1");
+
+        set1.add("v7", "v8");
+        set1.remove("v1");
+
+        Set<String> set1cp = set1.members();
+
+        set1cp.forEach(settmp -> {
+            log.info("@@@@@ settmp = {}", settmp);
+        });
+
+        //求交集
+        Set inter = set1.intersect("set2");
+
+        inter.forEach(intertmp -> {
+            log.info("@@@@@@ intertmp = {}", intertmp);
+        });
+
+        //求差集
+        Set diff = set1.diff("set2");
+
+        diff.forEach(difftmp -> {
+            log.info("@@@@@@ difftmp = {}", difftmp);
+        });
+
+        //求并集
+        Set union = set1.union("set2");
+
+        union.forEach(unionTmp -> {
+            log.info("@@@@@@ unionTmp = {}", unionTmp);
+        });
+
+        //求并集 并用新的集合保存
+        set1.unionAndStore("set1", "union");
+
+        return new HashMap<>();
+    }
+
+
     @RequestMapping("/zset")
     @ResponseBody
     public Map<String, Object> zset() {
@@ -75,7 +147,6 @@ public class RedisController {
         }
 
         stringRedisTemplate.opsForZSet().add("zset1", typedTupleSet);
-
 
 
         return new HashMap<>();
