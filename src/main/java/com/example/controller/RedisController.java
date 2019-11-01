@@ -160,6 +160,14 @@ public class RedisController {
 
         setScore.forEach(setTmp -> log.info("@@@@@@ setScoreTmp = {}", setTmp));
 
+        return new HashMap<>();
+    }
+
+    @RequestMapping("/multi")
+    @ResponseBody
+    public Map<String, Object> multi() {
+
+        redisTemplate.opsForValue().set("keyn", "value1");
 
 
 
