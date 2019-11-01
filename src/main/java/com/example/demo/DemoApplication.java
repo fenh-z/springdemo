@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.redis.RedisMsgListener;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -29,6 +30,8 @@ public class DemoApplication {
     private PlatformTransactionManager platformTransactionManager;
     @Autowired
     private RedisTemplate redisTemplate;
+    @Autowired
+    private RedisMsgListener redisMsgListener;
 
     @PostConstruct
     public void init() {
@@ -40,6 +43,8 @@ public class DemoApplication {
         redisTemplate.setKeySerializer(stringSerializer);
         redisTemplate.setValueSerializer(stringSerializer);
     }
+
+
 
     public static void main(String[] args) {
 
