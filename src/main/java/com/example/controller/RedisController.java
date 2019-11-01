@@ -142,11 +142,25 @@ public class RedisController {
             // 分数
             double score = i * 0.1;
             // 创建一个TypedTuple对象，存入值和分数
-            ZSetOperations.TypedTuple<String> typedTuple = new DefaultTypedTuple<String>("value" + i, score);
+            ZSetOperations.TypedTuple<String> typedTuple = new DefaultTypedTuple<>("value" + i, score);
             typedTupleSet.add(typedTuple);
         }
 
         stringRedisTemplate.opsForZSet().add("zset1", typedTupleSet);
+
+        BoundZSetOperations zsetOps = stringRedisTemplate.boundZSetOps("zset1");
+
+        zsetOps.add("value10", 0.26);
+
+        Set<String> setRange = zsetOps.range(0, 6);
+
+        setRange.forEach(setTmp -> log.info("@@@@@@ setTmp = {}", setTmp));
+
+        Set<String> setScore = zsetOps.rangeByScore(0.2, 0.6);//通过score排序获取有序集合
+
+        setScore.forEach(setTmp -> log.info("@@@@@@ setScoreTmp = {}", setTmp));
+
+
 
 
         return new HashMap<>();
