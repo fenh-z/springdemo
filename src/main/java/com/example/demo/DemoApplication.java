@@ -27,28 +27,27 @@ import javax.persistence.Entity;
 public class DemoApplication {
 
     @Autowired
-        private PlatformTransactionManager platformTransactionManager;
-        @Autowired
-        private RedisTemplate redisTemplate;
-        @Autowired
-        private RedisMsgListener redisMsgListener;
+    private PlatformTransactionManager platformTransactionManager;
+    @Autowired
+    private RedisTemplate redisTemplate;
+    @Autowired
+    private RedisMsgListener redisMsgListener;
 
-        @PostConstruct
-        public void init() {
-            initRedisTemplate();
-        }
+    @PostConstruct
+    public void init() {
+        initRedisTemplate();
+    }
 
-        public void initRedisTemplate() {
-            RedisSerializer stringSerializer = redisTemplate.getStringSerializer();
-            redisTemplate.setKeySerializer(stringSerializer);
-            redisTemplate.setValueSerializer(stringSerializer);
-        }
+    public void initRedisTemplate() {
+        RedisSerializer stringSerializer = redisTemplate.getStringSerializer();
+        redisTemplate.setKeySerializer(stringSerializer);
+        redisTemplate.setValueSerializer(stringSerializer);
+    }
 
 
+    public static void main(String[] args) {
 
-        public static void main(String[] args) {
-
-            SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(DemoApplication.class, args);
 
 //		HelloService helloService = new HelloServiceImpl();
 //
