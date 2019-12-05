@@ -10,12 +10,14 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.Entity;
 
+@EnableScheduling
 @SpringBootApplication(scanBasePackages = "com.example")
 //@EnableJpaRepositories(basePackages = "com.example.jpa")
 //@EntityScan(basePackages = "com.example.pojo")
