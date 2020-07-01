@@ -13,8 +13,12 @@ import org.springframework.stereotype.Component;
 public class Timer {
 
     @Scheduled(fixedRate = 1000)
-    public void scheduleExe(){
-        System.out.println("21111");
+    public void scheduleExe() throws InterruptedException {
+        System.out.println("");
+        System.out.println("111111");
+        System.out.println("211111");
+        Thread.sleep(10000);
+        System.out.println("311111");
     }
 
 }

@@ -5,6 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisClusterConfiguration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
@@ -21,7 +22,7 @@ import java.net.UnknownHostException;
  * @CreateDate 2019/10/22 2:48 下午
  * @Describe
  */
-//@Configuration
+@Configuration
 public class RedisConfig {
 
     private RedisConnectionFactory connectionFactory;

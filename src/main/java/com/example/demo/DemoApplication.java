@@ -17,7 +17,6 @@ import org.springframework.transaction.PlatformTransactionManager;
 import javax.annotation.PostConstruct;
 import javax.persistence.Entity;
 
-@EnableScheduling
 @SpringBootApplication(scanBasePackages = "com.example")
 //@EnableJpaRepositories(basePackages = "com.example.jpa")
 //@EntityScan(basePackages = "com.example.pojo")
