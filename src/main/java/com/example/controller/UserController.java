@@ -35,6 +35,8 @@ public class UserController {
     public User print(Long id, String userName, String note) {
 
         System.out.println("begin print");
+        System.out.println("begin print");
+        System.out.println("begin print");
 
         User user = new User();
         user.setNote(note);
