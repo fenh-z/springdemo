@@ -7,6 +7,6 @@ package com.example.springaop;
  */
 public class TestGitFLow {
     public static void main(String[] args) {
-        
+        System.out.println("");
     }
 }
