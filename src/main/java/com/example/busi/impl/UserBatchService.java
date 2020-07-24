@@ -31,6 +31,7 @@ public class UserBatchService implements IUserBatchService {
         int cnt = 0;
 
         for (User user : userList) {
+            System.out.println("");
             cnt += userService.insertUser(user);
         }
 
