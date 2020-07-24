@@ -44,6 +44,12 @@ public class UserController {
         user.setUserName(userName);
 
         System.out.println("end print");
+        System.out.println("end print");
+        System.out.println("end print");
+        System.out.println("end print");
+        System.out.println("end print");
+        System.out.println("end print");
+        System.out.println("end print");
         System.out.println("user print " + user.toString());
 
         userService.print(user);
